@@ -3,6 +3,8 @@ set(
     DOMINANT_TONES_SOURCES
     Image.cpp
     Image.hpp
+    KMeans.cpp
+    KMeans.hpp
     stb_image.h
 )
 
