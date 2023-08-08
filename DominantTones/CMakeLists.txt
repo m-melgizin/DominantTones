@@ -1,6 +1,7 @@
 
 set(
     DOMINANT_TONES_SOURCES
+    BaseEstimator.hpp
     Image.cpp
     Image.hpp
     KMeans.cpp
