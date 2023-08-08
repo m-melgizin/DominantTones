@@ -19,6 +19,7 @@ public:
     Image(const std::string& filename);
     Image(const std::vector<uint8_t>& raw_data);
     Image(const std::vector<std::vector<Pixel>>& image);
+    Image(const std::vector<std::vector<std::vector<uint8_t>>>& image);
     Image(const std::vector<Pixel>& image, int width, int height, bool copy = true);
     ~Image() = default;
 

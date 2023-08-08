@@ -51,6 +51,31 @@ Image::Image(const std::vector<std::vector<Pixel>>& image)
     }
 }
 
+Image::Image(const std::vector<std::vector<std::vector<uint8_t>>>& image)
+    : m_data(nullptr), m_width(0), m_height(0), m_channels(0), m_size(0)
+{
+    if (!image.empty() && !image[0].empty())
+    {
+        m_height = static_cast<int>(image.size());
+        m_width = static_cast<int>(image[0].size());
+        m_channels = 3;
+        m_size = m_width * m_height;
+        m_data = std::make_unique<Pixel[]>(m_size);
+
+        size_t i = 0;
+        for (const auto& row : image)
+        {
+            for (const auto& pixel : row)
+            {
+                m_data[i].r = pixel[0];
+                m_data[i].g = pixel[1];
+                m_data[i].b = pixel[2];
+                i++;
+            }
+        }
+    }
+}
+
 Image::Image(const std::vector<Pixel>& image, int width, int height, bool copy)
     : m_data(nullptr), m_width(0), m_height(0), m_channels(0), m_size(0)
 {
