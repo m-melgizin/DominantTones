@@ -1,0 +1,3 @@
+[submodule "DominantTonesPy/pybind11"]
+	path = DominantTonesPy/pybind11
+	url = https://github.com/pybind/pybind11
