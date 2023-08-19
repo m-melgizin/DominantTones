@@ -1,5 +1,5 @@
 import dominant_tones_bindings
-
+from typing import Self
 
 class Image:
     def __init__(
@@ -150,7 +150,7 @@ class KMeans:
         self._kmeans = dominant_tones_bindings.KMeans(
             n_clusters, max_iter, tol, random_state)
 
-    def fit(self, image: Image) -> KMeans:
+    def fit(self, image: Image) -> Self:
         """
         Fits the KMeans model to the given image.
 
