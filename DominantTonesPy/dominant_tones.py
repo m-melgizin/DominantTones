@@ -93,7 +93,7 @@ class Image:
         Returns:
             iterator: An iterator over the image.
         """
-        return iter(self._image)
+        return iter(self._image.get_image())
 
     def __getitem__(self, index):
         """
