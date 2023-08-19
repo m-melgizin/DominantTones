@@ -9,9 +9,9 @@ namespace
     double distance(Image::Pixel p1, Image::Pixel p2)
     {
         return std::sqrt(
-            static_cast<double>((p1.r - p2.r) * (p1.r - p2.r)) + 
-            static_cast<double>((p1.g - p2.g) * (p1.g - p2.g)) + 
-            static_cast<double>((p1.b - p2.b) * (p1.b - p2.b))
+            static_cast<double>((p1[0] - p2[0]) * (p1[0] - p2[0])) +
+            static_cast<double>((p1[1] - p2[1]) * (p1[1] - p2[1])) +
+            static_cast<double>((p1[2] - p2[2]) * (p1[2] - p2[2]))
         );
     }
 } // namespace
@@ -101,13 +101,13 @@ void KMeans::Fit(const Image& image)
             const auto clusterSize = clusters[i].size();
             for (const auto& pixel : clusters[i])
             {
-                sumR += pixel.r;
-                sumG += pixel.g;
-                sumB += pixel.b;
+                sumR += pixel[0];
+                sumG += pixel[1];
+                sumB += pixel[2];
             }
-            newCentroids[i].r = static_cast<uint8_t>(sumR / clusterSize);
-            newCentroids[i].g = static_cast<uint8_t>(sumG / clusterSize);
-            newCentroids[i].b = static_cast<uint8_t>(sumB / clusterSize);
+            newCentroids[i][0] = static_cast<uint8_t>(sumR / clusterSize);
+            newCentroids[i][1] = static_cast<uint8_t>(sumG / clusterSize);
+            newCentroids[i][2] = static_cast<uint8_t>(sumB / clusterSize);
         }
 
         // Check for convergence

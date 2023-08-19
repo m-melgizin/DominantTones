@@ -67,9 +67,9 @@ Image::Image(const std::vector<std::vector<std::vector<uint8_t>>>& image)
         {
             for (const auto& pixel : row)
             {
-                m_data[i].r = pixel[0];
-                m_data[i].g = pixel[1];
-                m_data[i].b = pixel[2];
+                m_data[i][0] = pixel[0];
+                m_data[i][0] = pixel[1];
+                m_data[i][0] = pixel[2];
                 i++;
             }
         }
@@ -142,12 +142,12 @@ size_t Image::GetSize() const
     return m_size;
 }
 
-std::vector<std::vector<std::vector<Image::uint8_t>>> Image::GetImage() const
+std::vector<std::vector<Image::Pixel>> Image::GetImage() const
 {
-    std::vector<std::vector<std::vector<Image::uint8_t>>> image(
+    std::vector<std::vector<Image::Pixel>> image(
         m_height,
-        std::vector<std::vector<uint8_t>>(
-            m_width, std::vector<uint8_t>(m_channels)
+        std::vector<Image::Pixel>(
+            m_width, {0, 0, 0}
         )
     );
     for (int y = 0; y < m_height; ++y)
@@ -155,9 +155,9 @@ std::vector<std::vector<std::vector<Image::uint8_t>>> Image::GetImage() const
         for (int x = 0; x < m_width; ++x)
         {
             const Pixel& p = (*this)(x, y);
-            image[y][x][0] = p.r;
-            image[y][x][1] = p.g;
-            image[y][x][2] = p.b;
+            image[y][x][0] = p[0];
+            image[y][x][1] = p[1];
+            image[y][x][2] = p[2];
         }
     }
     return image;

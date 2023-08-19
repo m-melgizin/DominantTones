@@ -14,3 +14,7 @@ add_library(
     STATIC
     ${DOMINANT_TONES_SOURCES}
 )
+
+set_target_properties(DominantTones PROPERTIES
+    COMPILE_OPTIONS "-fPIC"
+)

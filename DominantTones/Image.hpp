@@ -1,6 +1,7 @@
 #ifndef IMAGE_HPP
 #define IMAGE_HPP
 
+#include <array>
 #include <memory>
 #include <vector>
 #include <string>
@@ -9,10 +10,7 @@ class Image
 {
 public:
     typedef unsigned char uint8_t;
-    struct Pixel
-    {
-        uint8_t r, g, b;
-    };
+    typedef std::array<uint8_t, 3> Pixel;
     typedef Pixel Color;
 
 public:
@@ -34,7 +32,7 @@ public:
     int GetHeight() const;
     int GetChannels() const;
     size_t GetSize() const;
-    std::vector<std::vector<std::vector<uint8_t>>> GetImage() const;
+    std::vector<std::vector<Pixel>> GetImage() const;
 
 public:
     Pixel& operator[](size_t idx);
