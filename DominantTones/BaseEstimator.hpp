@@ -1,8 +1,6 @@
 #ifndef BASE_ESTIMATOR_HPP
 #define BASE_ESTIMATOR_HPP
 
-#include <vector>
-
 #include "Image.hpp"
 
 class BaseEstimator
