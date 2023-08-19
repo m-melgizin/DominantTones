@@ -150,7 +150,7 @@ class KMeans:
         self._kmeans = dominant_tones_bindings.KMeans(
             n_clusters, max_iter, tol, random_state)
 
-    def fit(self, image: Image):
+    def fit(self, image: Image) -> KMeans:
         """
         Fits the KMeans model to the given image.
 
@@ -158,6 +158,7 @@ class KMeans:
             image (Image): The image to fit the model to.
         """
         self._kmeans.fit(image._image)
+        return self
 
     @property
     def colors(self) -> list[list[int]]:
